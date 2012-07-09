@@ -1,3 +1,64 @@
+@echo off
+setlocal enabledelayedexpansion
+COLOR 0A
+if (%1)==(0) goto skipme
+if (%1) neq () goto adbi
+echo -------------------------------------------------------------------------- >> ApkMultiTool2.log
+echo ^|%date% -- %time%^| >> ApkMultiTool2.log
+echo -------------------------------------------------------------------------- >> ApkMultiTool2.log
+multitool 0 2>> ApkMultiTool2.log
+
+
+
+:error
+
+:skipme
+cd "%~dp0"
+mode con:cols=90 lines=50
+
+
+
+cls
+set usrc=9
+set dec=0
+set capp=None
+set heapy=512
+set jar=0
+java -version 
+if errorlevel 1 goto errjava
+other\adb version 
+if errorlevel 1 goto erradb
+set /A count=0
+FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
+set /A count+=1
+set tmpstore=%%~nF%%~xF
+)
+if %count%==1 (set capp=%tmpstore%)
+
+:skipme2
+cls
+ECHO ***************************************************************************************
+ECHO *                             APKTOOL MULTI-TOOLS2                                    *
+ECHO ***************************************************************************************
+ECHO *                    Written By Gerald Wayne Baggett Jr {Raziel23x                    *
+ECHO ***************************************************************************************
+ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
+ECHO ***************************************************************************************
+ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
+ECHO *  average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract    *
+ECHO *  the apk, edit it, then sign the apk and then adb push/install it. This process is  * 
+ECHO *  quite tiresome if you are testing a method that needs fine tweaking.               *
+ECHO ***************************************************************************************
+ECHO *  This script should make the process a LOT smoother.                                *
+ECHO *  There is an option of compiling/signing/installing all in one step                 *
+ECHO ***************************************************************************************
+ECHO *  Thanks:                                                                            *
+ECHO *  Goes to Daneshm90 the Original Writer of Apk Manager                               *
+ECHO *  Goes to Brut.all for his awesome tool.                                             *
+ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
+ECHO *  Goes to JF for of course, smali/baksmali                                           *
+ECHO ***************************************************************************************
+PAUSE
 :MAINMENU
 if %dec%==0 (set decs=Sources and Resources)
 if %dec%==1 (set decs=Sources)
@@ -8,7 +69,9 @@ cls
 ECHO ***************************************************************************************
 ECHO *                             APKTOOL MULTI-TOOLS2                                    *
 ECHO ***************************************************************************************
-ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^* Decompile : %decs% ^* App: %capp%    *
+ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^                                       *
+ECHO ***************************************************************************************
+ECHO * Decompile : %decs% ^* App: %capp% *
 ECHO ***************************************************************************************
 ECHO * 0. IMAGE EDITING                                                                    *
 ECHO *                                                                                     *
@@ -109,7 +172,7 @@ cls
 ECHO ***************************************************************************************
 ECHO *                       Advanced Tasks Such As Code Editing                           *
 ECHO ***************************************************************************************
-ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^* Decompile : %decs% ^* App: %capp%    *
+ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^* Decompile : %desecs% ^* App: %capp%    *
 ECHO ***************************************************************************************
 ECHO * 9    Decompile apk                                                                  *
 ECHO * 10   Decompile apk (with dependencies) (For proprietary ROM apks)                   *
@@ -237,3 +300,20 @@ ECHO *       You went crazy and entered something that wasnt part of the menu op
 ECHO ***************************************************************************************
 PAUSE
 goto MENU04
+
+
+
+:errjava
+cls
+echo Java was not found, you will not be able to sign apks or use apktool
+PAUSE
+goto skipme2
+:erradb
+cls
+echo Adb was not found, you will not be able to manipulate the files on your phone
+PAUSE
+goto skipme2
+:noproj
+echo Please Select A Project To Work On (Option #9)
+PAUSE
+goto MAINMENU

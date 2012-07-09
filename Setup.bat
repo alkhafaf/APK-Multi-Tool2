@@ -3,10 +3,10 @@ setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
 if (%1) neq () goto skipme
-ECHO *********************************************************************************** >> setuplog.txt
-ECHO ^*                          %date% -- %time%^ >> APK-Multi-Tool.log                         * >> setuplog.txt
-ECHO *********************************************************************************** >> setuplog.txt
-Setup 0 2>> >> APK-Multi-Tool.log
+ECHO *********************************************************************************** >> setuplog.log
+ECHO ^*                          %date% -- %time%^ >> setuplog.log                         * >> setuplog.log
+ECHO *********************************************************************************** >> setuplog.log
+Setup 0 2>> setuplog.log
 
 
 :error
