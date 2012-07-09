@@ -42,6 +42,8 @@ ECHO *                             APKTOOL MULTI-TOOLS2                         
 ECHO ***************************************************************************************
 ECHO *                    Written By Gerald Wayne Baggett Jr {Raziel23x                    *
 ECHO ***************************************************************************************
+ECHO *                           Website: http://apkmultitool.com                          *
+ECHO ***************************************************************************************
 ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
 ECHO ***************************************************************************************
 ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
@@ -52,7 +54,7 @@ ECHO ***************************************************************************
 ECHO *  This script should make the process a LOT smoother.                                *
 ECHO *  There is an option of compiling/signing/installing all in one step                 *
 ECHO ***************************************************************************************
-ECHO *  Thanks:                                                                            *
+ECHO *  Special Thanks:                                                                    *
 ECHO *  Goes to Daneshm90 the Original Writer of Apk Manager                               *
 ECHO *  Goes to Brut.all for his awesome tool.                                             *
 ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
@@ -71,7 +73,7 @@ ECHO *                             APKTOOL MULTI-TOOLS2                         
 ECHO ***************************************************************************************
 ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^                                       *
 ECHO ***************************************************************************************
-ECHO * Decompile : %decs% ^* App: %capp% *
+ECHO * Decompile : %decs% ^* App: %capp%                        *
 ECHO ***************************************************************************************
 ECHO * 0. IMAGE EDITING                                                                    *
 ECHO *                                                                                     *
