@@ -13,7 +13,7 @@ Setup 0 2>> setuplog.log
 
 :skipme
 cd "%~dp0"
-mode con:cols=140 lines=50
+mode con:cols=85 lines=50
 
 set usrc=9
 set capp=None
@@ -42,7 +42,7 @@ ECHO * 2. Installing Framework-Res                                              
 ECHO *    This Will install one of the Framwork-Res Files for 1.x/2.x/3.x/4.x          *
 ECHO *    This Feature also will install any of the other Dependencies needed          *
 ECHO *    In order to use this feature make sure to drop all of the needed files       *
-ECHO *    into the platform-tools Folder or else this script will not find them        *
+ECHO *    into the other Folder or else this script will not find them        *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -64,7 +64,7 @@ ECHO *                                                                          
 ECHO ***********************************************************************************
 SET /P menunr=Please make your decision:
 IF %menunr%==1 (goto CHECKUPDATE)
-IF %menunr%==2 (goto FRAMRES)
+IF %menunr%==2 (goto FRAMRES )
 IF %menunr%==3 (goto SETDIR)
 IF %menunr%==4 (goto LOGR)
 IF %menunr%==5 (goto ABOUT)
@@ -247,7 +247,7 @@ goto FRAMRES
 
 :FRAMRES1
 cls
-cd platform-tools
+cd other
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                         Searching for framework-res.apk                       *
@@ -259,10 +259,13 @@ IF NOT EXIST framework-res.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        framework-res.apk not Found please make sure the file is in the        *
-ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
+cd "%~dp0"
+goto FRAMRES
+)
 IF EXIST framework-res.apk (
 cls
 ECHO *********************************************************************************
@@ -279,12 +282,13 @@ ECHO *                  Installation of framework-res.apk Complete              
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
 goto FRAMRES
+)
 :FRAMRES2
 cls
-cd platform-tools
+cd other
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                        Searching for twframework-res.apk                      *
@@ -292,14 +296,19 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 IF NOT EXIST twframework-res.apk (
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        twframework-res.apk not Found please make sure the file is in the      *
-ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
+cd "%~dp0"
+goto FRAMRES
+)
 IF EXIST twframework-res.apk (
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                      twframework-res.apk Found Installing                     *
@@ -314,12 +323,13 @@ ECHO *                 Installation of twframework-res.apk Complete             
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
 goto FRAMRES
+)
 :FRAMRES3
 cls
-cd platform-tools
+cd other
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       Searching for com.htc.resources.apk                     *
@@ -330,12 +340,15 @@ IF NOT EXIST com.htc.resources.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        com.htc.resources.apk not Found please make sure the file is in the    *
-ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
+cd "%~dp0"
+goto FRAMRES
+)
 IF EXIST com.htc.resources.apk (
-
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                     com.htc.resources.apk Found Installing                    *
@@ -350,12 +363,14 @@ ECHO *                Installation of com.htc.resources.apk Complete            
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
 goto FRAMRES
+)
 :FRAMRES4
 ping 1.1.1.1 -n 1 -w 2000 > nul
-cd platform-tools
+cd other
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                            Searching for SystemUI.apk                         *
@@ -367,10 +382,13 @@ IF NOT EXIST SystemUI.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        SystemUI.apk not Found please make sure the file is in the             *
-ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul 
+cd "%~dp0"
+goto FRAMRES
+)
 IF EXIST SystemUI.apk (
 cls
 ECHO *********************************************************************************
@@ -387,9 +405,11 @@ ECHO *                     Installation of SystemUI.apk Complete                
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul )
+ping 1.1.1.1 -n 1 -w 2000 > nul
 cd "%~dp0"
 goto FRAMRES
+)
+
 
 
 :ABOUT
