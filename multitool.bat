@@ -55,10 +55,21 @@ ECHO *  This script should make the process a LOT smoother.                     
 ECHO *  There is an option of compiling/signing/installing all in one step                 *
 ECHO ***************************************************************************************
 ECHO *  Special Thanks:                                                                    *
+ECHO ***************************************************************************************
 ECHO *  Goes to Daneshm90 the Original Writer of Apk Manager                               *
 ECHO *  Goes to Brut.all for his awesome tool.                                             *
 ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
 ECHO *  Goes to JF for of course, smali/baksmali                                           *
+ECHO ***************************************************************************************
+ECHO *  Private Testes Special Thanks:                                                     *
+ECHO ***************************************************************************************
+ECHO *  Windows Testers:                                                                   *
+ECHO ***************************************************************************************
+ECHO *  Goes to Purian23                                                                   *
+ECHO ***************************************************************************************
+ECHO *  Linux Testers:                                                                     *
+ECHO ***************************************************************************************
+ECHO *  Goes to Crush2Push                                                                 *
 ECHO ***************************************************************************************
 PAUSE
 :MAINMENU
@@ -76,16 +87,16 @@ ECHO ***************************************************************************
 ECHO * Decompile : %decs% ^* App: %capp%                        *
 ECHO ***************************************************************************************
 ECHO * 0. IMAGE EDITING                                                                    *
-ECHO *                                                                                     *
-ECHO *                                                                                     *
+ECHO *    This feature allows you to edit images without the need to decompile the apk     *
+ECHO *    files making simple image changes such as icones and basic image editing         *
 ECHO ***************************************************************************************
 ECHO * 1. CODE EDITING                                                                     *
-ECHO *                                                                                     *
-ECHO *                                                                                     *
+ECHO *    This feature not only allows eding of the images it also allows you to edit      *
+ECHO *    the sourcecode of the select apk to make actual code changes                     *
 ECHO ***************************************************************************************
 ECHO * 2. ROM THEME PORTER                                                                 *
-ECHO *                                                                                     *
-ECHO *                                                                                     *
+ECHO *    This feature allows you to port entire themes from one rom to another            *
+ECHO *    without the need to resign the apk files making fast easy rom theme ports        *
 ECHO ***************************************************************************************
 ECHO * 3.  BATCH OPERATIONS                                                                *
 ECHO *                                                                                     *
