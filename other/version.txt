@@ -1,7 +1,7 @@
-Apk Multi-Tool  v2.0.0
-ApkTool         v1.4.9
+Apk Multi-Tool  1.0.10
+ApkTool         v1.4.5
 7zip            v9.20
 Roptipng        v0.6.3
 Sox             v14.3.2
-Android SDK     API 16
+Android SDK     Rev 20.0.1
 Wget            v1.13.4
