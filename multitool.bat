@@ -148,7 +148,9 @@ cls
 ECHO ***************************************************************************************
 ECHO *                             APKTOOL MULTI-TOOLS2                                    *
 ECHO ***************************************************************************************
-ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^* Decompile : %decs% ^* App: %capp%    *
+ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^                                       *
+ECHO ***************************************************************************************
+ECHO * Decompile : %decs% ^* App: %capp%                        *
 ECHO ***************************************************************************************
 ECHO *                       Simple Tasks Such As Image Editing                            *
 ECHO ***************************************************************************************
@@ -183,28 +185,83 @@ cd "%~dp0"
 set menunr=GARBAGE01
 cls
 ECHO ***************************************************************************************
-ECHO *                       Advanced Tasks Such As Code Editing                           *
+ECHO * 0. ORIGINAL EDITOR                                                                  *
+ECHO *    This is the original editor scripts that you used for editing(ba)smali           *
+ECHO *    This mode only system files will have the keep folder options                    *
 ECHO ***************************************************************************************
-ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^* Decompile : %desecs% ^* App: %capp%    *
+ECHO * 1. NEW EDITOR                                                                       *
+ECHO *    This is the NEW editor scripts that you used for editing(ba)smali                *
+ECHO *    This mode Both (non)system files will have the keep folder options               *
 ECHO ***************************************************************************************
-ECHO * 9    Decompile apk                                                                  *
-ECHO * 10   Decompile apk (with dependencies) (For proprietary ROM apks)                   *
-ECHO * 11   Compile apk                                                                    *
-ECHO * 12   Sign apk                                                                       *
-ECHO * 13   Install apk                                                                    *
-ECHO * 14   Compile apk / Sign apk / Install apk (Non System Apps Only)                    *
-ECHO *                                                                                     *
+ECHO * 2. DEBUGING MODE                                                                    *
+ECHO *    This feature not only allows eding of the images it also allows you to edit      *
+ECHO *    the sourcecode of the select apk to make actual code changes                     *
+ECHO ***************************************************************************************
+ECHO * 3. VERBOSE MODE                                                                     *
+ECHO *    This feature allows you to port entire themes from one rom to another            *
+ECHO *    without the need to resign the apk files making fast easy rom theme ports        *
 ECHO ***************************************************************************************
 SET /P menunr=Please make your decision:
-IF %menunr%==9 (goto de)
-IF %menunr%==10 (goto ded)
-IF %menunr%==11 (goto co)
-IF %menunr%==12 (goto si)
-IF %menunr%==13 (goto ins)
-IF %menunr%==14 (goto all)
+IF %menunr%==0 (goto MENU01A)
+IF %menunr%==1 (goto MENU01B)
+IF %menunr%==2 (goto MENU01C)
+IF %menunr%==3 (goto MENU01D)
 :WHAT
 ECHO ***************************************************************************************
 ECHO *       You went crazy and entered something that wasnt part of the menu options      *
+ECHO ***************************************************************************************
+PAUSE
+goto MENU01
+:MENU01A
+cd "%~dp0"
+set menunr=GARBAGE01A
+cls
+ECHO ***************************************************************************************
+ECHO *                       Advanced Tasks Such As Code Editing                           *
+ECHO ***************************************************************************************
+ECHO *                                   ORIGINAL EDITOR                                   *
+ECHO ***************************************************************************************
+ECHO * Compression: %usrc% ^* Heap Size: %heapy%mb ^                                       *
+ECHO ***************************************************************************************
+ECHO * Decompile : %decs% ^* App: %capp%                        *
+ECHO ***************************************************************************************
+ECHO * 0.   Decompile apk                                                                  *
+ECHO * 1.   Decompile apk (with dependencies) (For proprietary ROM apks)                   *
+ECHO * 2.   Compile apk                                                                    *
+ECHO * 3.   Sign apk                                                                       *
+ECHO * 4.   Install apk                                                                    *
+ECHO * 5.   Compile apk / Sign apk / Install apk (Non System Apps Only)                    *
+ECHO * 6.   Back to Editor Menu                                                            *
+ECHO ***************************************************************************************
+SET /P menunr=Please make your decision:
+IF %menunr%==0 (goto de)
+IF %menunr%==1 (goto ded)
+IF %menunr%==2 (goto co)
+IF %menunr%==3 (goto si)
+IF %menunr%==4 (goto ins)
+IF %menunr%==5 (goto all)
+IF %menunr%==5 (goto MENU01)
+:WHAT
+ECHO ***************************************************************************************
+ECHO *       You went crazy and entered something that wasnt part of the menu options      *
+ECHO ***************************************************************************************
+PAUSE
+goto MENU01A
+:MENU01B
+ECHO ***************************************************************************************
+ECHO *                                     COMING SOON                                     *
+ECHO ***************************************************************************************
+PAUSE
+goto MENU01
+:MENU01C
+ECHO ***************************************************************************************
+ECHO *                                     COMING SOON                                     *
+ECHO ***************************************************************************************
+PAUSE
+goto MENU01
+:MENU01D
+ECHO ***************************************************************************************
+ECHO *                                     COMING SOON                                     *
 ECHO ***************************************************************************************
 PAUSE
 goto MENU01
