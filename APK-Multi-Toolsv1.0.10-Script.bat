@@ -163,151 +163,13 @@ IF %menunr%==15 (goto all)
 echo You went crazy and entered something that wasnt part of the menu options
 PAUSE
 goto restart
-:switchc
-set /a dec+=1 
-if (%dec%)==(3) (set /a dec=0)
-goto restart
-:cleanp
-echo 1. Clean This Project's Folder
-echo 2. Clean All Apk's in Modding Folder
-echo 3. Clean All OGG's in OGG Folder
-echo 4. Clean All Apk's in Optimize Folder
-echo 5. Clean All Apk's in Signing Folder
-echo 6. Clean All Projects
-echo 7. Clean All Folders/Files
-echo 8. Go Back To Main Menu
-SET /P menuna=Please make your decision:
-echo Clearing Directories
-IF %menuna%==1 (
-if %capp%==None goto noproj
-rmdir /S /Q %userprofile%\apktool > nul
-rmdir /S /Q projects\%capp% > nul
-mkdir projects\%capp%
-)
-IF %menuna%==2 (
-rmdir /S /Q %userprofile%\apktool > nul
-rmdir /S /Q place-apk-here-for-modding > nul
-mkdir place-apk-here-for-modding
-)
-IF %menuna%==3 (
-rmdir /S /Q place-ogg-here > nul
-mkdir place-ogg-here
-)
-IF %menuna%==4 (
-rmdir /S /Q place-apk-here-to-batch-optimize > nul
-mkdir place-apk-here-to-batch-optimize
-)
-IF %menuna%==5 (
-rmdir /S /Q place-apk-here-for-signing > nul
-mkdir place-apk-here-for-signing
-)
-IF %menuna%==7 (
-rmdir /S /Q %userprofile%\apktool > nul
-rmdir /S /Q projects\%capp% > nul
-mkdir projects\%capp%
-rmdir /S /Q place-apk-here-for-modding > nul
-mkdir place-apk-here-for-modding
-rmdir /S /Q place-ogg-here > nul
-mkdir place-ogg-here
-rmdir /S /Q place-apk-here-to-batch-optimize > nul
-mkdir place-apk-here-to-batch-optimize
-rmdir /S /Q place-apk-here-for-signing > nul
-mkdir place-apk-here-for-signing
-rmdir /S /Q %userprofile%\apktool > nul
-rmdir /S /Q projects > nul
-mkdir projects
-)
-IF %menuna%==6 (
-rmdir /S /Q %userprofile%\apktool > nul
-rmdir /S /Q projects > nul
-mkdir projects
-)
-goto restart
-:about
-cls
-echo About
-echo -----
 
 
-
-
-
-
-
-type other\version.txt
-echo Tips
-echo ----
-echo 1. If Modifying system apps, never resign them unless you want to resign all
-echo apk's that share its shared:uid
-echo 2. If decompiling/recompiling system apps and if AndroidManifest.xml was not
-echo preserved from the original apk, then either push the apk when in recovery or
-echo by doing :
-echo adb remount
-echo adb shell stop
-echo adb push something.apk /wherever/something.apk
-echo adb shell start
-echo 3. Decompiling a themed apk is not possible, you must get the original unthemed
-echo apk, then decompile, make your theme/xml changes and recompile
-echo 4. If you're stuck and the log doesnot give you any indication as to what you 
-echo are doing wrong, then post in the thread http://www.tiny.cc/apkmanager
-echo Make sure u include ur APK-Multi-Tool.log, and if its not a editing problem i.e 
-echo its something regarding when u push it to your phone, then post ur adb log 
-echo as well. To do so 
-echo follow these steps :
-echo 1. Connect ur phone to ur pc
-echo 2. Push/install the app on your phone
-echo 3. Select "Create Log" option on this menu
-echo 4. Let the new window run for 10 seconds, then close it
-echo Once done, you will find a adblog.txt in the root folder
-echo Upload that as well.
-echo.
-echo 1. Create log
-echo 2. Go back to main menu
-SET /P menunr=Please make your decision:
-IF %menunr%==1 (Start ""%~dp0other\adb.exe" Log" other\signer 2)
-goto restart
 :portapk
 echo Im going to try resigning the apk and see if that works
 echo Did it successfully install (y/n) ^?
 echo Ok, lets try looking through for any shared uid, if i find any i will remove them
-:filesel
-cls
-set /A count=0
-FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
-set /A count+=1
-set a!count!=%%F
-if /I !count! LEQ 9 (echo ^- !count!  - %%F )
-if /I !count! GTR 10 (echo ^- !count! - %%F )
-)
-echo.
-echo Choose the app to be set as current project?
-set /P INPUT=Enter It's Number: %=%
-if /I %INPUT% GTR !count! (goto chc)
-if /I %INPUT% LSS 1 (goto chc)
-set capp=!a%INPUT%!
-set jar=0
-set ext=jar
-IF "!capp:%ext%=!" NEQ "%capp%" set jar=1
-goto restart
-:chc
-set capp=None
-goto restart
-rem :bins
-rem echo Waiting for device
-rem "%~dp0other\adb.exe" wait-for-device
-rem echo Installing Apks
-rem FOR %%F IN ("%~dp0place-apk-here-for-signing\*.apk") DO "%~dp0other\adb.exe" install -r "%%F"
-rem goto restart
-:heap
-set /P INPUT=Enter max size for java heap space in megabytes (eg 512) : %=%
-set heapy=%INPUT%
-cls
-goto restart
-:usrcomp
-set /P INPUT=Enter Compression Level (0-9) : %=%
-set usrc=%INPUT%
-cls
-goto restart
+
 
 :btit
 ( echo Batch Theme Image Transfer TOOL
@@ -438,10 +300,7 @@ cd ..
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
 rmdir temp /S /Q
 goto restart
-:noproj
-echo Please Select A Project To Work On (Option #23)
-PAUSE
-goto restart
+
 :ap
 echo Where do you want adb to pull the apk from? 
 echo Example of input : /system/app/launcher.apk
