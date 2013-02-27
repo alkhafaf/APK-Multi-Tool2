@@ -474,14 +474,46 @@ set /P inab=Type input: %=%
 if %inab%==y (set capp=%INPUT%)
 goto restart
 :apu
-echo Where do you want adb to push to and as what name 
-echo Example of input : /system/app/launcher.apk
-set /P INPUT=Type input: %=%
-echo Waiting for device
-"%~dp0other\adb.exe" wait-for-device
+ECHO Do you want to keep the file name ? (any key for yes, n for no)
+set /p INPUT=""
+if %INPUT%==n (
+ECHO "Enter the new name: "
+set /P newcapp=Type input: %=%
+set newname=1
+goto push_dir
+)
+set newname=0 
+ 
+:push_dir
+ECHO Where do you want adb to push to ? (f) for framework and (a) for app
+set /P fileloc=""
+"%~dp0other\adb.exe" devices >null
 "%~dp0other\adb.exe" remount
-echo Pushing apk
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\System_%capp%" %INPUT%
+ECHO Pushing apk
+if %fileloc%==a (
+if %newname%==0 (
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/app/%capp%
+goto chk_err_push
+)
+if %newname%==1 (
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/app/%newcapp%
+goto chk_err_push
+)
+)
+if %fileloc%==f (
+if %newname%==0 (
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/framework/%capp%
+goto chk_err_push
+)
+if %newname%==1 (
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/framework/%newcapp%
+goto chk_err_push
+)
+)
+ECHO "u pressed the wrong key"
+goto push_dir
+
+:chk_err_push
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
